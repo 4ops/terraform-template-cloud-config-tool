@@ -1,0 +1,44 @@
+name: ${ trimspace(name) }
+shell: ${ shell != "" ? trimspace(shell) : "/bin/bash" }
+lock_passwd: ${ lock_passwd != null ? tostring(lock_passwd) : "true" }
+%{~ if gecos != null && gecos != "" }
+gecos: ${ tostring(gecos) }
+%{~ endif }
+%{~ if selinux_user != null && selinux_user != "" }
+selinux_user: ${ trimspace(selinux_user) }
+%{~ endif }
+%{~ if length(groups) > 0 }
+groups: [${ join(", ", groups) }]
+%{~ endif }
+%{~ if length(sudo) > 0 }
+sudo: [${ join(", ", formatlist("'%s'", sudo)) }]
+%{~ endif }
+%{~ if inactive != null }
+inactive: ${ tostring(inactive) }
+%{~ endif }
+%{~ if system != null }
+system: ${ tostring(system) }
+%{~ endif }
+%{~ if snapuser != null && snapuser != "" }
+snapuser: ${ trimspace(snapuser) }
+%{~ endif }
+%{~ if homedir != null && homedir != "" }
+homedir: ${ trimspace(homedir) }
+%{~ else }
+home: /home/${ trimspace(name) }
+%{~ endif }
+%{~ if passwd != null && passwd != "" }
+passwd: ${ trimspace(passwd) }
+%{~ endif }
+%{~ if ssh_redirect_user != null }
+ssh_redirect_user: ${ ssh_redirect_user }
+%{~ endif }
+%{~ if ssh_import_id != null && ssh_import_id != "" }
+ssh_import_id: ${ trimspace(ssh_import_id) }
+%{~ endif }
+%{~ if length(ssh_authorized_keys) > 0 }
+ssh_authorized_keys:
+%{~ endif }
+%{~ for ssh_key in ssh_authorized_keys }
+  - ${ trimspace(ssh_key) }
+%{~ endfor ~}
