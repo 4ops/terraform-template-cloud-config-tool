@@ -10,15 +10,15 @@ Setup modules in `main.tf`:
 
 ```terraform
 module this_user {
-  source  = 4ops/cloud-config-tool/template
-  version = 1.0.0
+  source  = "4ops/cloud-config-tool/template"
+  version = "1.0.0"
 
   users  = local.user
 }
 
 module administrators {
-  source  = 4ops/cloud-config-tool/template
-  version = 1.0.0
+  source  = "4ops/cloud-config-tool/template"
+  version = "1.0.0"
 
   users = var.administrators
 }
