@@ -33,9 +33,12 @@ passwd: ${ trimspace(passwd) }
 %{~ if ssh_redirect_user != null }
 ssh_redirect_user: ${ ssh_redirect_user }
 %{~ endif }
-%{~ if ssh_import_id != null && ssh_import_id != "" }
-ssh_import_id: ${ trimspace(ssh_import_id) }
+%{~ if length(ssh_import_id) > 0 }
+ssh_import_id:
 %{~ endif }
+%{~ for ssh_id in ssh_import_id }
+  - ${ trimspace(ssh_id) }
+%{~ endfor ~}
 %{~ if length(ssh_authorized_keys) > 0 }
 ssh_authorized_keys:
 %{~ endif }

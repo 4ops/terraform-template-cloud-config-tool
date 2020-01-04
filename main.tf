@@ -23,7 +23,7 @@ locals {
     selinux_user        = null
     passwd              = null
     ssh_redirect_user   = null
-    ssh_import_id       = null
+    ssh_import_id       = []
     ssh_authorized_keys = []
   }
 }

@@ -14,7 +14,7 @@ module this_user {
     {
       name          = "terramodule",
       groups        = ["wheel"],
-      ssh_import_id = "terramodule",
+      ssh_import_id = ["terramodule", "gh:4ops"],
     },
   ]
 }

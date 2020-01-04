@@ -19,7 +19,7 @@ variable users {
   # selinux_user         string         null
   # passwd               string         null
   # ssh_redirect_user    bool           false
-  # ssh_import_id        string         null
+  # ssh_import_id        list(string)   []
   # ssh_authorized_keys  list(string)   []
 
   default = [

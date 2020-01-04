@@ -11,14 +11,14 @@ Setup modules in `main.tf`:
 ```terraform
 module this_user {
   source  = "4ops/cloud-config-tool/template"
-  version = "1.0.0"
+  version = "1.1.0"
 
   users  = local.user
 }
 
 module administrators {
   source  = "4ops/cloud-config-tool/template"
-  version = "1.0.0"
+  version = "1.1.0"
 
   users = var.administrators
 }
@@ -67,7 +67,8 @@ system_info:
     lock_passwd: true
     groups: [wheel]
     home: /home/terramodule
-    ssh_import_id: terramodule
+    ssh_import_id:
+      - terramodule
 package_upgrade: true
 runcmd:
   - userdel -fr ec2-user
